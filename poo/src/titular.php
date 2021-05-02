@@ -1,5 +1,10 @@
 <?php
 
+namespace Alura\Banco\Modelo\Conta;
+
+use Alura\Banco\Modelo\CPF;
+use Alura\Banco\Modelo\Endereco;
+use Alura\Banco\Modelo\Pessoa;
 
 class Titular extends Pessoa
 {
@@ -12,9 +17,14 @@ class Titular extends Pessoa
         $this->endereco = $endereco;
     }
 
-
-    public function recuperaEndereco()
+    public function getEndereco(): Endereco
     {
         return $this->endereco;
     }
+
+    public function podeAutenticar(string $senha): bool
+    {
+        return $senha === 'abcd';
+    }
+
 }

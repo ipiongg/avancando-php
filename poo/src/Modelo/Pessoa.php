@@ -3,9 +3,11 @@
 //NAMESPACE É COMO SE FOSSE UM PACOTE
 namespace Alura\Banco\Modelo;
 
+abstract class Pessoa
 
-class Pessoa
 {
+    use AcessoPropriedades;
+
     protected $nome;
     private $cpf;
 

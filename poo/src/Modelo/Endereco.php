@@ -3,14 +3,18 @@
 namespace Alura\Banco\Modelo;
 
 
+
 class Endereco
 {
+
+    use AcessoPropriedades;
+
     private string $cidade;
     private string $bairro;
     private string $rua;
     private string $numero;
 
-    function __construct(string $cidade, string $bairro, string $numero, string $rua)
+    function __construct(string $cidade, string $bairro, string $rua, string $numero)
     {
         $this->cidade = $cidade;
         $this->bairro = $bairro;
@@ -19,7 +23,7 @@ class Endereco
     }
 
     public function recuperaCidade(): string
-    
+
     {
         return $this->cidade;
     }
@@ -37,5 +41,17 @@ class Endereco
     public function recuperaNumero(): string
     {
         return $this->numero;
+    }
+
+    public function __toString(): string
+    {
+        return "{$this->rua}, {$this->numero}, {$this->bairro}, {$this->cidade}";
+    }
+
+
+    public function __set($nomeAtributo, $value): void
+    {
+        $metodo = 'alterar' . ucfirst($nomeAtributo);
+        $this->$metodo($value);
     }
 }
